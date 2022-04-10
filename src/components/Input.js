@@ -32,7 +32,7 @@ const Input = () => {
 
   const handleBlur = useCallback(() => {
     setValidation(!isEmail(email));
-  }, []);
+  }, [validation, email]);
 
   useEffect(() => {
     setEmailIconValidate(isEmail(email));
