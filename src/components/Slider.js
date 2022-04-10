@@ -1,15 +1,13 @@
 import React, { useCallback, useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Slider = () => {
   const [percent, setPercent] = useState(0);
   const [value, setValue] = useState(0);
-  const [point, setPoint] = useState(0);
 
   const onChange = useCallback((e) => {
     setPercent(e.target.value);
     setValue(e.target.value);
-    setPoint(e.target.value * 3.5);
   }, []);
 
   return (
@@ -27,7 +25,6 @@ const Slider = () => {
           value={value}
           percent={percent}
         />
-        <PercentBar point={point} />
       </PercentSlider>
     </Container>
   );
@@ -91,14 +88,6 @@ const Input = styled.input`
     height: 5px;
     border-radius: 25px;
   }
-`;
-
-const PercentBar = styled.div`
-  position: absolute;
-  height: 5px;
-  background-color: #10aeb1;
-  top: 9px;
-  border-radius: 25px;
 `;
 
 export default Slider;
