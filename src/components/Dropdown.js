@@ -17,20 +17,27 @@ const Dropdown = () => {
   const [visibleSearchBox, setVisibleSearchBox] = useState(false);
   const [value, setValue] = useState("");
   const symbolRef = useRef();
+
   const onClickBox = useCallback(() => {
     setVisibleSearchBox(!visibleSearchBox);
     setValue("");
-  }, []);
+  }, [visibleSearchBox, value]);
 
-  const onClickItem = useCallback((e) => {
-    setVisibleSearchBox(false);
-    setCurrentItem(e.target.innerText);
-  }, []);
+  const onClickItem = useCallback(
+    (e) => {
+      setVisibleSearchBox(false);
+      setCurrentItem(e.target.innerText);
+    },
+    [visibleSearchBox, currentItem]
+  );
 
-  const onChange = useCallback((e) => {
-    const searchText = e.target.value.toLocaleLowerCase();
-    setValue(searchText);
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      const searchText = e.target.value.toLocaleLowerCase();
+      setValue(searchText);
+    },
+    [value]
+  );
 
   useEffect(() => {
     const filteredSymbols = symbols.filter((symbol) => {
