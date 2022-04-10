@@ -28,7 +28,7 @@ const Input = () => {
     } else {
       setPasswordType("text");
     }
-  }, []);
+  }, [passwordType]);
 
   const handleBlur = useCallback(() => {
     setValidation(!isEmail(email));
