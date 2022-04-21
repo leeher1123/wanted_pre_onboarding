@@ -1,30 +1,41 @@
-import React, { useCallback, useState } from "react";
-import styled from "styled-components";
+import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
 
 const Slider = () => {
+  const point = [1, 25, 50, 75, 100];
   const [percent, setPercent] = useState(0);
-  const [value, setValue] = useState(0);
 
   const onChange = useCallback((e) => {
     setPercent(e.target.value);
-    setValue(e.target.value);
   }, []);
+
+  const onClickPoint = (e) => {
+    const count = e.target.innerText;
+    setPercent(parseInt(count));
+  };
 
   return (
     <Container>
-      <PercentBox>
+      <CountBox>
         <h3>{percent}</h3>
         <span>%</span>
-      </PercentBox>
+      </CountBox>
       <PercentSlider>
         <Input
-          type="range"
-          min="0"
-          max="100"
+          type='range'
+          min='0'
+          max='100'
+          value={percent}
           onChange={onChange}
-          value={value}
           percent={percent}
         />
+        <PointList>
+          {point.map((item) => (
+            <PointItem key={item} onClick={onClickPoint}>
+              {item}%
+            </PointItem>
+          ))}
+        </PointList>
       </PercentSlider>
     </Container>
   );
@@ -35,7 +46,7 @@ const Container = styled.div`
   margin: 70px auto;
 `;
 
-const PercentBox = styled.div`
+const CountBox = styled.div`
   width: 300px;
   height: 35px;
   border: 1px solid #ccc;
@@ -63,30 +74,37 @@ const PercentSlider = styled.div`
 
 const Input = styled.input`
   display: block;
-  -webkit-appearance: none;
   width: 100%;
   background: transparent;
   height: 5px;
   cursor: pointer;
   border-color: transparent;
-  overflow: hidden;
+  background-color: #10aeb1;
+`;
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 18px;
-    width: 18px;
-    border: 3px solid #fff;
-    margin-top: -6.5px;
-    background-color: #111;
-    border-radius: 100%;
-    box-shadow: 185.9px 0px 0px 168px #e0e0e0;
-  }
+const PointList = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 350px;
+  top: 17px;
+`;
 
-  &::-webkit-slider-runnable-track {
-    width: 100%;
-    background: #10aeb1;
-    height: 5px;
-    border-radius: 25px;
+const PointItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 18px;
+  cursor: pointer;
+  background-color: #eee;
+  border-radius: 25px;
+  font-size: 12px;
+  color: #b9b8b8;
+
+  &:hover {
+    background-color: #18f;
+    color: #fff;
   }
 `;
 
