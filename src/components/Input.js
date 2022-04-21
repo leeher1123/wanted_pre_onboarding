@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useCallback, useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import {
   AiFillCheckCircle,
   AiFillEye,
   AiFillEyeInvisible,
-} from "react-icons/ai";
+} from 'react-icons/ai';
 
 const isEmail = (email) => {
   const emailRegex =
@@ -13,8 +13,8 @@ const isEmail = (email) => {
 };
 
 const Input = () => {
-  const [email, setEmail] = useState("");
-  const [passwordType, setPasswordType] = useState("password");
+  const [email, setEmail] = useState('');
+  const [passwordType, setPasswordType] = useState('password');
   const [emailIconValidate, setEmailIconValidate] = useState(false);
   const [validation, setValidation] = useState(false);
 
@@ -23,10 +23,10 @@ const Input = () => {
   }, []);
 
   const onClickIcon = useCallback(() => {
-    if (passwordType === "text") {
-      setPasswordType("password");
+    if (passwordType === 'text') {
+      setPasswordType('password');
     } else {
-      setPasswordType("text");
+      setPasswordType('text');
     }
   }, [passwordType]);
 
@@ -37,13 +37,14 @@ const Input = () => {
   useEffect(() => {
     setEmailIconValidate(isEmail(email));
   }, [email]);
+
   return (
     <Container>
       <Layout>
         <span>E-mail</span>
         <InputBox
-          type="text"
-          placeholder="E-mail"
+          type='text'
+          placeholder='E-mail'
           onChange={onChangeEmail}
           value={email}
           onBlur={handleBlur}
@@ -55,9 +56,9 @@ const Input = () => {
       </Layout>
       <Layout>
         <span>Password</span>
-        <InputBox type={`${passwordType}`} placeholder="Password" />
+        <InputBox type={`${passwordType}`} placeholder='Password' />
         <PasswordIcon onMouseDown={onClickIcon}>
-          {passwordType === "password" ? <AiFillEyeInvisible /> : <AiFillEye />}
+          {passwordType === 'password' ? <AiFillEyeInvisible /> : <AiFillEye />}
         </PasswordIcon>
       </Layout>
     </Container>
