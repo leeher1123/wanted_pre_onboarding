@@ -1,14 +1,14 @@
-import React, { useCallback, useState } from "react";
-import styled, { css } from "styled-components";
-import cn from "classnames";
+import { useCallback, useState } from 'react'
+import styled, { css } from 'styled-components'
+import cn from 'classnames'
 
-const Tab = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const foods = ["감자", "고구마", "카레라이스"];
+function Tab() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const foods = ['감자', '고구마', '카레라이스']
 
   const onClickItem = useCallback((e, index) => {
-    setCurrentIndex(index);
-  }, []);
+    setCurrentIndex(index)
+  }, [])
 
   return (
     <Container>
@@ -25,12 +25,12 @@ const Tab = () => {
         <ItemBar index={currentIndex} />
       </FoodList>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;
-`;
+`
 
 const FoodList = styled.div`
   width: 480px;
@@ -41,7 +41,7 @@ const FoodList = styled.div`
   background-color: #fdfdfd;
   border-bottom: 2px solid #eee;
   position: relative;
-`;
+`
 
 const ItemBar = styled.div`
   width: 150px;
@@ -61,7 +61,7 @@ const ItemBar = styled.div`
     css`
       transform: translateX(300px);
     `}
-`;
+`
 
 const FoodItem = styled.div`
   width: 150px;
@@ -77,6 +77,6 @@ const FoodItem = styled.div`
   &.isActive {
     color: #111;
   }
-`;
+`
 
-export default Tab;
+export default Tab

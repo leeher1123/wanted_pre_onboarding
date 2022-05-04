@@ -1,17 +1,17 @@
-import React, { useCallback, useState } from "react";
-import styled from "styled-components";
-import cn from "classnames";
+import { useCallback, useState } from 'react'
+import styled from 'styled-components'
+import cn from 'classnames'
 
-const Toggle = () => {
-  const [text, setText] = useState("기본");
-  const [isActive, setIsActive] = useState(false);
+function Toggle() {
+  const [text, setText] = useState('기본')
+  const [isActive, setIsActive] = useState(false)
   const onClickMenu = useCallback(
     (e) => {
-      setText(e.target.innerText);
-      setIsActive(!isActive);
+      setText(e.target.innerText)
+      setIsActive(!isActive)
     },
     [isActive]
-  );
+  )
   return (
     <Container>
       <ToggleMenu>
@@ -20,12 +20,12 @@ const Toggle = () => {
         <MenuItem onClick={onClickMenu}>상세</MenuItem>
       </ToggleMenu>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;
-`;
+`
 
 const ToggleMenu = styled.div`
   position: relative;
@@ -35,7 +35,7 @@ const ToggleMenu = styled.div`
   margin: 0 auto;
   display: flex;
   padding: 3px;
-`;
+`
 
 const SlideItem = styled.div`
   position: absolute;
@@ -51,7 +51,7 @@ const SlideItem = styled.div`
   &.isActive {
     transform: translate(100%);
   }
-`;
+`
 
 const MenuItem = styled.div`
   display: flex;
@@ -63,6 +63,6 @@ const MenuItem = styled.div`
   color: #767676;
   font-weight: bold;
   cursor: pointer;
-`;
+`
 
-export default Toggle;
+export default Toggle

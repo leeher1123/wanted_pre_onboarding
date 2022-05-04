@@ -1,23 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import Toggle from "./components/Toggle";
-import Tab from "./components/Tab";
-import Slider from "./components/Slider";
-import Input from "./components/Input";
-import Dropdown from "./components/Dropdown";
+import Toggle from './components/Toggle'
+import Tab from './components/Tab'
+import Slider from './components/Slider'
+import Input from './components/Input'
+import Dropdown from './components/Dropdown'
 
-const App = () => {
+function App() {
   return (
-    <Container>
+    <div>
       <Toggle />
       <Tab />
       <Slider />
       <Input />
       <Dropdown />
-    </Container>
-  );
-};
+    </div>
+  )
+}
 
-const Container = styled.div``;
-
-export default App;
+export default App

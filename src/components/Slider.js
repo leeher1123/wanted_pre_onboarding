@@ -1,18 +1,18 @@
-import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import { useCallback, useState } from 'react'
+import styled from 'styled-components'
 
-const Slider = () => {
-  const point = [1, 25, 50, 75, 100];
-  const [percent, setPercent] = useState(0);
+function Slider() {
+  const point = [1, 25, 50, 75, 100]
+  const [percent, setPercent] = useState(0)
 
   const onChange = useCallback((e) => {
-    setPercent(e.target.value);
-  }, []);
+    setPercent(e.target.value)
+  }, [])
 
   const onClickPoint = (e) => {
-    const count = e.target.innerText;
-    setPercent(parseInt(count));
-  };
+    const count = e.target.innerText
+    setPercent(parseInt(count, 10))
+  }
 
   return (
     <Container>
@@ -21,14 +21,7 @@ const Slider = () => {
         <span>%</span>
       </CountBox>
       <PercentSlider>
-        <Input
-          type='range'
-          min='0'
-          max='100'
-          value={percent}
-          onChange={onChange}
-          percent={percent}
-        />
+        <Input type='range' min='0' max='100' value={percent} onChange={onChange} percent={percent} />
         <PointList>
           {point.map((item) => (
             <PointItem key={item} onClick={onClickPoint}>
@@ -38,13 +31,13 @@ const Slider = () => {
         </PointList>
       </PercentSlider>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 70px auto;
-`;
+`
 
 const CountBox = styled.div`
   width: 300px;
@@ -64,13 +57,13 @@ const CountBox = styled.div`
   h3 {
     font-size: 17px;
   }
-`;
+`
 
 const PercentSlider = styled.div`
   position: relative;
   width: 350px;
   margin: 30px auto;
-`;
+`
 
 const Input = styled.input`
   display: block;
@@ -80,7 +73,7 @@ const Input = styled.input`
   cursor: pointer;
   border-color: transparent;
   background-color: #10aeb1;
-`;
+`
 
 const PointList = styled.div`
   display: flex;
@@ -88,7 +81,7 @@ const PointList = styled.div`
   position: absolute;
   width: 350px;
   top: 17px;
-`;
+`
 
 const PointItem = styled.div`
   display: flex;
@@ -106,6 +99,6 @@ const PointItem = styled.div`
     background-color: #18f;
     color: #fff;
   }
-`;
+`
 
-export default Slider;
+export default Slider

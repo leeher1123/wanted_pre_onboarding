@@ -1,54 +1,43 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
-import {
-  AiFillCheckCircle,
-  AiFillEye,
-  AiFillEyeInvisible,
-} from 'react-icons/ai';
+import { useCallback, useEffect, useState } from 'react'
+import styled, { css } from 'styled-components'
+import { AiFillCheckCircle, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const isEmail = (email) => {
-  const emailRegex =
-    /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-  return emailRegex.test(email);
-};
+  const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  return emailRegex.test(email)
+}
 
-const Input = () => {
-  const [email, setEmail] = useState('');
-  const [passwordType, setPasswordType] = useState('password');
-  const [emailIconValidate, setEmailIconValidate] = useState(false);
-  const [validation, setValidation] = useState(false);
+function Input() {
+  const [email, setEmail] = useState('')
+  const [passwordType, setPasswordType] = useState('password')
+  const [emailIconValidate, setEmailIconValidate] = useState(false)
+  const [validation, setValidation] = useState(false)
 
   const onChangeEmail = useCallback((e) => {
-    setEmail(e.target.value);
-  }, []);
+    setEmail(e.target.value)
+  }, [])
 
   const onClickIcon = useCallback(() => {
     if (passwordType === 'text') {
-      setPasswordType('password');
+      setPasswordType('password')
     } else {
-      setPasswordType('text');
+      setPasswordType('text')
     }
-  }, [passwordType]);
+  }, [passwordType])
 
   const handleBlur = useCallback(() => {
-    setValidation(!isEmail(email));
-  }, [validation, email]);
+    setValidation(!isEmail(email))
+  }, [email])
 
   useEffect(() => {
-    setEmailIconValidate(isEmail(email));
-  }, [email]);
+    setEmailIconValidate(isEmail(email))
+  }, [email])
 
   return (
     <Container>
       <Layout>
         <span>E-mail</span>
-        <InputBox
-          type='text'
-          placeholder='E-mail'
-          onChange={onChangeEmail}
-          value={email}
-          onBlur={handleBlur}
-        />
+        <InputBox type='text' placeholder='E-mail' onChange={onChangeEmail} value={email} onBlur={handleBlur} />
         <EmailIcon validation={emailIconValidate}>
           <AiFillCheckCircle />
         </EmailIcon>
@@ -62,12 +51,12 @@ const Input = () => {
         </PasswordIcon>
       </Layout>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;
-`;
+`
 
 const Layout = styled.div`
   position: relative;
@@ -79,7 +68,7 @@ const Layout = styled.div`
   span {
     font-size: 12px;
   }
-`;
+`
 
 const InputBox = styled.input`
   display: block;
@@ -94,7 +83,7 @@ const InputBox = styled.input`
   ::-webkit-input-placeholder {
     color: #cecece;
   }
-`;
+`
 
 const iconStyle = css`
   position: absolute;
@@ -105,7 +94,7 @@ const iconStyle = css`
     fill: #d0d0d0;
     font-size: 18px;
   }
-`;
+`
 
 const EmailIcon = styled.div`
   ${iconStyle};
@@ -116,17 +105,17 @@ const EmailIcon = styled.div`
         fill: #10aeb1;
       }
     `}
-`;
+`
 
 const PasswordIcon = styled.div`
   ${iconStyle};
   cursor: pointer;
-`;
+`
 
 const ErrorCode = styled.div`
   color: #c51313;
   font-size: 13px;
   padding: 5px;
-`;
+`
 
-export default Input;
+export default Input
