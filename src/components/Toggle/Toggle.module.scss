@@ -1,0 +1,43 @@
+@use '../../styles/constants/colors';
+
+.container {
+  margin-top: 70px;
+}
+
+.toggleMenu {
+  position: relative;
+  display: flex;
+  width: 400px;
+  padding: 3px;
+  margin: 0 auto;
+  background-color: colors.$GRAYE;
+  border-radius: 25px;
+}
+
+.slideBox {
+  &.isActive {
+    transform: translate(100%);
+  }
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 35px;
+  font-weight: bold;
+  background-color: colors.$WHITE;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.toggleItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 35px;
+  font-weight: bold;
+  color: colors.$GRAYA;
+  cursor: pointer;
+  border-radius: 25px;
+}

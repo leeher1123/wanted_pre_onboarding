@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import styles from './Input.module.scss'
 import classNames from 'classnames'
-
 import { AiFillCheckCircle, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const isEmail = (email) => {

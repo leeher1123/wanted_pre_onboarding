@@ -1,70 +1,72 @@
+@use '../../styles/constants/colors';
+
 .container {
   max-width: 258px;
   margin: 70px auto 500px;
 }
 
 .dropdownBox {
-  width: 240px;
-  height: 25px;
-  border: 1px solid #d7d7d7;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-  color: #5d5d5d;
-  font-size: 15px;
-  cursor: pointer;
   span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     svg {
       font-size: 28px;
     }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 240px;
+  height: 25px;
+  padding: 8px;
+  font-size: 15px;
+  color: colors.$GRAY6;
+  cursor: pointer;
+  border: 1px solid colors.$GRAYD;
+  border-radius: 4px;
 }
 
 .symbolMenu {
   width: 258px;
   margin: 5px auto;
-  border: 1px solid #d7d7d7;
+  border: 1px solid colors.$GRAYD;
   border-radius: 4px;
   box-shadow: 1px 5px 14px 1px rgba(202, 202, 202, 0.66);
 }
 
 .searchBox {
-  padding: 5px 10px;
-  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid colors.$GRAYD;
 }
 
 .searchIcon {
+  svg {
+    fill: colors.$GRAYA;
+  }
   display: flex;
   align-items: center;
   justify-content: center;
-  svg {
-    fill: #ababab;
-  }
 }
 
 .inputBox {
+  :-webkit-input-placeholder {
+    color: colors.$GRAYA;
+  }
   display: block;
   width: 90%;
-  border: 0;
   padding: 8px;
+  border: 0;
   outline: none;
-  ::-webkit-input-placeholder {
-    color: #ababab;
-  }
 }
 
 .symbolItem {
+  &:hover {
+    background-color: colors.$GRAYD;
+  }
   padding: 13px 25px;
   font-size: 14px;
   cursor: pointer;
-  &:hover {
-    background-color: #f3f3f3;
-  }
 }

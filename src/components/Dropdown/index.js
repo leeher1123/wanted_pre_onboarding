@@ -19,11 +19,11 @@ function Dropdown() {
 
   const onClickItem = useCallback((e) => {
     setVisibleSearchBox(false)
-    setCurrentItem(e.target.innerText)
+    setCurrentItem(e.currentTarget.innerText)
   }, [])
 
   const onChangeText = useCallback((e) => {
-    const searchText = e.target.value.toLocaleLowerCase()
+    const searchText = e.currentTarget.value.toLocaleLowerCase()
     setValue(searchText)
   }, [])
 
@@ -35,7 +35,7 @@ function Dropdown() {
   }, [value])
 
   const onClose = (e) => {
-    if (!symbolRef.current.contains(e.target)) {
+    if (!symbolRef.currentTarget.contains(e.target)) {
       setVisibleSearchBox(false)
     }
   }
