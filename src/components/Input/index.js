@@ -12,13 +12,13 @@ function Input() {
   const [email, setEmail] = useState('')
   const [passwordType, setPasswordType] = useState('password')
   const [emailIconValidate, setEmailIconValidate] = useState(false)
-  const [validation, setValidation] = useState(false)
+  const [errorCode, setErrorCode] = useState(false)
 
-  const onChangeEmail = useCallback((e) => {
-    setEmail(e.target.value)
+  const handleChange = useCallback((e) => {
+    setEmail(e.currentTarget.value)
   }, [])
 
-  const onClickIcon = useCallback(() => {
+  const handleClickIcon = useCallback(() => {
     if (passwordType === 'text') {
       setPasswordType('password')
     } else {
@@ -27,7 +27,7 @@ function Input() {
   }, [passwordType])
 
   const handleBlur = useCallback(() => {
-    setValidation(!isEmail(email))
+    setErrorCode(!isEmail(email))
   }, [email])
 
   useEffect(() => {
@@ -42,19 +42,19 @@ function Input() {
           className={styles.inputBox}
           type='text'
           placeholder='E-mail'
-          onChange={onChangeEmail}
+          onChange={handleChange}
           value={email}
           onBlur={handleBlur}
         />
-        <div className={classNames(styles.emailIcon, { isActive: emailIconValidate })}>
+        <div className={classNames(styles.emailIcon, emailIconValidate && styles.isActive)}>
           <AiFillCheckCircle />
         </div>
-        {validation ? <div className={styles.errorCode}>Invalid e-mail address.</div> : null}
+        {errorCode ? <div className={styles.errorCode}>Invalid e-mail address.</div> : null}
       </div>
       <div className={styles.layout}>
         <span>Password</span>
         <input className={styles.inputBox} type={`${passwordType}`} placeholder='Password' />
-        <div className={styles.passwordIcon} onMouseDown={onClickIcon}>
+        <div className={styles.passwordIcon} onMouseDown={handleClickIcon}>
           {passwordType === 'password' ? <AiFillEyeInvisible /> : <AiFillEye />}
         </div>
       </div>

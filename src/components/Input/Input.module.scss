@@ -1,59 +1,65 @@
+@use '/src/styles/constants/colors';
+
 @mixin iconStyle {
   position: absolute;
   top: 26px;
   right: 13px;
+
   svg {
-    fill: #d0d0d0;
     font-size: 18px;
+    fill: colors.$GRAYD;
   }
 }
 
 .container {
   margin-top: 70px;
-}
 
-.layout {
-  position: relative;
-  width: 300px;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  color: #767676;
-  span {
-    font-size: 12px;
-  }
-}
+  .layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px auto;
+    color: colors.$GRAY6;
 
-.inputBox {
-  display: block;
-  height: 40px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  background-color: #fafafa;
-  &::-webkit-input-placeholder {
-    color: #cecece;
-  }
-}
+    span {
+      font-size: 12px;
+    }
 
-.emailIcon {
-  @include iconStyle;
-  &.isActive {
-    svg {
-      fill: #10aeb1;
+    .inputBox {
+      box-sizing: border-box;
+      display: block;
+      height: 40px;
+      padding: 8px;
+      background-color: colors.$GRAYF;
+      border: 1px solid colors.$GRAYD;
+      border-radius: 3px;
+      outline: none;
+
+      &::placeholder {
+        color: colors.$GRAYA;
+      }
+    }
+
+    .emailIcon {
+      @include iconStyle;
+
+      &.isActive {
+        svg {
+          fill: colors.$TEAL;
+        }
+      }
+    }
+
+    .passwordIcon {
+      @include iconStyle;
+      cursor: pointer;
+    }
+
+    .errorCode {
+      padding: 5px;
+      font-size: 13px;
+      color: colors.$RED;
     }
   }
-}
-
-.passwordIcon {
-  @include iconStyle;
-  cursor: pointer;
-}
-
-.errorCode {
-  color: #c51313;
-  font-size: 13px;
-  padding: 5px;
 }
