@@ -4,15 +4,15 @@ import styles from './Slider.module.scss'
 const POINT = [1, 25, 50, 75, 100]
 
 function Slider() {
-  const [percent, setPercent] = useState(0)
+  const [percent, setPercent] = useState(1)
 
-  const onChange = useCallback((e) => {
+  const handleChange = useCallback((e) => {
     setPercent(e.currentTarget.value)
   }, [])
 
-  const onClickPoint = (e) => {
-    const count = e.currentTarget.innerText
-    setPercent(parseInt(count, 10))
+  const handleClick = (e) => {
+    const { number } = e.currentTarget.dataset
+    setPercent(parseInt(number, 10))
   }
 
   return (
@@ -28,12 +28,12 @@ function Slider() {
           min='0'
           max='100'
           value={percent}
-          onChange={onChange}
+          onChange={handleChange}
           percent={percent}
         />
         <div className={styles.pointList}>
           {POINT.map((item) => (
-            <div className={styles.pointItem} key={item} onClick={onClickPoint}>
+            <div className={styles.pointItem} key={`point-${item}`} data-number={item} onClick={handleClick}>
               {item}%
             </div>
           ))}
