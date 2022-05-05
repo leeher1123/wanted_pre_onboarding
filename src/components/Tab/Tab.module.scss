@@ -2,47 +2,50 @@
 
 .container {
   margin-top: 70px;
-}
 
-.foodList {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 480px;
-  padding: 0;
-  margin: 0 auto;
-  background-color: #fdfdfd;
-  border-bottom: 2px solid colors.$GRAYE;
-}
+  .foodList {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    padding: 0;
+    margin: 0 auto;
+    background-color: #fdfdfd;
+    border-bottom: 2px solid colors.$GRAYE;
 
-.foodItem {
-  &.isActive {
-    color: colors.$BLACK;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 56px;
-  font-size: 14px;
-  font-weight: bold;
-  color: colors.$GRAYA;
-  cursor: pointer;
-}
+    .foodItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 56px;
+      font-size: 14px;
+      font-weight: bold;
+      color: colors.$GRAYA;
+      cursor: pointer;
 
-.itemBar {
-  &.one {
-    &.two {
-      transform: translateX(300px);
+      &.isActive {
+        color: colors.$BLACK;
+      }
     }
-    transform: translateX(150px);
+
+    .itemBar {
+      position: absolute;
+      top: 56px;
+      left: 15px;
+      width: 150px;
+      height: 2px;
+      background-color: #10aeb1;
+      transition: 0.2s;
+
+      &.one {
+        transform: translateX(150px);
+      }
+
+      &.two {
+        transform: translateX(300px);
+      }
+    }
   }
-  position: absolute;
-  top: 56px;
-  left: 15px;
-  width: 150px;
-  height: 2px;
-  background-color: #10aeb1;
-  transition: 0.2s;
 }
