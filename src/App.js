@@ -1,6 +1,6 @@
 import Toggle from './components/Toggle'
-import Tab from './Tab'
-import Slider from './Slider'
+import Tab from './components/Tab'
+import Slider from './components/Slider'
 import Input from './components/Input'
 import Dropdown from './components/Dropdown'
 

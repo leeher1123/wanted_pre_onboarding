@@ -3,70 +3,75 @@
 .container {
   max-width: 258px;
   margin: 70px auto 500px;
-}
 
-.dropdownBox {
-  span {
-    svg {
-      font-size: 28px;
-    }
+  .dropdownBox {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 240px;
+    height: 25px;
+    padding: 8px;
+    font-size: 15px;
+    color: colors.$GRAY6;
+    cursor: pointer;
+    border: 1px solid colors.$GRAYD;
+    border-radius: 4px;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        font-size: 28px;
+      }
+    }
   }
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 240px;
-  height: 25px;
-  padding: 8px;
-  font-size: 15px;
-  color: colors.$GRAY6;
-  cursor: pointer;
-  border: 1px solid colors.$GRAYD;
-  border-radius: 4px;
-}
 
-.symbolMenu {
-  width: 258px;
-  margin: 5px auto;
-  border: 1px solid colors.$GRAYD;
-  border-radius: 4px;
-  box-shadow: 1px 5px 14px 1px rgba(202, 202, 202, 0.66);
-}
+  .symbolMenu {
+    width: 258px;
+    margin: 5px auto;
+    border: 1px solid colors.$GRAYD;
+    border-radius: 4px;
+    box-shadow: 1px 5px 14px 1px rgba(202, 202, 202, 60%);
 
-.searchBox {
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  border-bottom: 1px solid colors.$GRAYD;
-}
+    .searchBox {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-bottom: 1px solid colors.$GRAYD;
 
-.searchIcon {
-  svg {
-    fill: colors.$GRAYA;
+      .searchIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: colors.$GRAYA;
+        }
+      }
+
+      .inputBox {
+        display: block;
+        width: 90%;
+        padding: 8px;
+        border: 0;
+        outline: none;
+
+        :-webkit-input-placeholder {
+          color: colors.$GRAYA;
+        }
+      }
+    }
+
+    .symbolItem {
+      padding: 13px 25px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: colors.$GRAYD;
+      }
+    }
   }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inputBox {
-  :-webkit-input-placeholder {
-    color: colors.$GRAYA;
-  }
-  display: block;
-  width: 90%;
-  padding: 8px;
-  border: 0;
-  outline: none;
-}
-
-.symbolItem {
-  &:hover {
-    background-color: colors.$GRAYD;
-  }
-  padding: 13px 25px;
-  font-size: 14px;
-  cursor: pointer;
 }

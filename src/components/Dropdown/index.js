@@ -9,33 +9,32 @@ function Dropdown() {
   const [filteredSymbols, setFilteredSymbols] = useState(MENU_ITEMS)
   const [currentItem, setCurrentItem] = useState('All Symbols')
   const [visibleSearchBox, setVisibleSearchBox] = useState(false)
-  const [value, setValue] = useState('')
+  const [text, setText] = useState('')
   const symbolRef = useRef()
 
-  const onClickBox = useCallback(() => {
+  const handleClickBox = useCallback(() => {
     setVisibleSearchBox(!visibleSearchBox)
-    setValue('')
+    setText('')
   }, [visibleSearchBox])
 
-  const onClickItem = useCallback((e) => {
+  const handleClickItem = useCallback((e) => {
+    const { name } = e.currentTarget.dataset
+    setCurrentItem(name)
     setVisibleSearchBox(false)
-    setCurrentItem(e.currentTarget.innerText)
   }, [])
 
-  const onChangeText = useCallback((e) => {
+  const handleChange = useCallback((e) => {
     const searchText = e.currentTarget.value.toLocaleLowerCase()
-    setValue(searchText)
+    setText(searchText)
   }, [])
 
   useEffect(() => {
-    const filteredSymbols = MENU_ITEMS.filter((symbol) => {
-      return symbol.toLocaleLowerCase().includes(value)
-    })
+    const filteredSymbols = MENU_ITEMS.filter((symbol) => symbol.toLocaleLowerCase().includes(text))
     setFilteredSymbols(filteredSymbols)
-  }, [value])
+  }, [text])
 
   const onClose = (e) => {
-    if (!symbolRef.currentTarget.contains(e.target)) {
+    if (!symbolRef.current.contains(e.target)) {
       setVisibleSearchBox(false)
     }
   }
@@ -46,7 +45,7 @@ function Dropdown() {
   return (
     <div className={styles.container}>
       <div ref={symbolRef}>
-        <div className={styles.dropdownBox} onClick={onClickBox}>
+        <div className={styles.dropdownBox} onClick={handleClickBox}>
           {currentItem}
           <span>
             <RiArrowDropDownFill />
@@ -62,15 +61,15 @@ function Dropdown() {
                 className={styles.inputBox}
                 type='text'
                 placeholder='Search Symbol'
-                onChange={onChangeText}
-                value={value}
+                onChange={handleChange}
+                value={text}
               />
             </div>
-            <div className={styles.symbolItem} onClick={onClickItem}>
+            <div className={styles.symbolItem} data-name='All Symbols' onClick={handleClickItem}>
               All Symbols
             </div>
             {filteredSymbols.map((symbol) => (
-              <div className={styles.symbolItem} key={symbol} onClick={onClickItem}>
+              <div className={styles.symbolItem} key={`item-${symbol}`} data-name={symbol} onClick={handleClickItem}>
                 {symbol}
               </div>
             ))}
